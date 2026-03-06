@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taurus ♉ The Celestial Bull</title>
+    <meta name="description" content="Explore the Taurus zodiac — sensual, luxurious, grounded. Discover personality traits, aesthetics, celestial elements, and cosmic compatibility.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Skip link for accessibility -->
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <!-- Custom cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- Ambient background orbs -->
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+
+    <!-- Tooltip -->
+    <div class="tooltip" id="tooltip" role="tooltip"></div>
+
+    <!-- Gold burst canvas for Easter egg -->
+    <canvas id="burst-canvas"></canvas>
+
+    <!-- Sound toggle button -->
+    <button class="sound-toggle" id="soundToggle" onclick="toggleSound()" aria-label="Toggle ambient sound" data-tooltip="Toggle forest ambience">
+        <svg viewBox="0 0 24 24">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+            <path class="wave1" d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+            <path class="wave2" d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+        </svg>
+        <span class="sound-label">Forest Ambience</span>
+    </button>
+
+    <!-- Navigation -->
+    <nav id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-left">
+            <div class="nav-logo" onclick="navigateTo('home')" role="button" tabindex="0" aria-label="Go to home page">
+                ♉ Taurus<em>Zodiac</em>
+            </div>
+            <div class="venus-clock" id="venusClock" data-tooltip="Venus Hour — live celestial time" aria-live="polite">
+                <span class="vc-icon">♀</span>
+                <span class="vc-time" id="venusTime">--:--:--</span>
+                <span class="vc-label">Venus</span>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a class="nav-link active" data-page="home" onclick="navigateTo('home')" tabindex="0" role="button">Home</a>
+            <a class="nav-link" data-page="personality" onclick="navigateTo('personality')" tabindex="0" role="button">Personality</a>
+            <a class="nav-link" data-page="aesthetics" onclick="navigateTo('aesthetics')" tabindex="0" role="button">Aesthetics</a>
+            <a class="nav-link" data-page="elements" onclick="navigateTo('elements')" tabindex="0" role="button">Elements</a>
+            <a class="nav-link" data-page="compatibility" onclick="navigateTo('compatibility')" tabindex="0" role="button">Compatibility</a>
+        </div>
+        <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile navigation panel -->
+    <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile menu">
+        <a class="nav-link" onclick="navigateTo('home');toggleMobileNav()" role="button">Home</a>
+        <a class="nav-link" onclick="navigateTo('personality');toggleMobileNav()" role="button">Personality</a>
+        <a class="nav-link" onclick="navigateTo('aesthetics');toggleMobileNav()" role="button">Aesthetics</a>
+        <a class="nav-link" onclick="navigateTo('elements');toggleMobileNav()" role="button">Elements</a>
+        <a class="nav-link" onclick="navigateTo('compatibility');toggleMobileNav()" role="button">Compatibility</a>
+    </div>
+
+    <!-- Main content -->
+    <main id="main-content">
+
+        <!-- ═══════════════ HOME PAGE ═══════════════ -->
+        <div class="page active" id="page-home">
+            <div class="hero">
+                <div class="hero-bg"></div>
+                <canvas id="constellation-canvas"></canvas>
+                <canvas id="particles-canvas"></canvas>
+                <div class="hero-content">
+                    <p class="hero-overline">April 20 — May 20 · Earth Sign · Ruled by Venus</p>
+                    <h1 class="hero-title">Taurus</h1>
+                    <p class="hero-subtitle">"I build my kingdom with patience,<br>and I crown it with beauty."</p>
+                    <p class="hero-tagline">The celestial bull — grounded in earth, draped in luxury, steadfast as ancient oaks. Where others rush, Taurus savors every step of the journey.</p>
+                    <div class="hero-badges">
+                        <span class="hero-badge" data-tooltip="Taurus is a fixed modality sign">♉ Fixed Modality</span>
+                        <span class="hero-badge" data-tooltip="Earth grounds and stabilizes">🌍 Earth Element</span>
+                        <span class="hero-badge" data-tooltip="Venus rules love and beauty">♀ Venus Ruled</span>
+                    </div>
+                    <button class="hero-cta" onclick="navigateTo('personality')" aria-label="Explore Taurus personality">
+                        Discover Your Nature
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="hero-scroll" aria-hidden="true">
+                    <div class="scroll-line"></div>
+                    <span class="scroll-text">Explore</span>
+                </div>
+            </div>
+            <div class="home-features">
+                <div class="home-feature" onclick="navigateTo('personality')" data-tooltip="Explore traits" tabindex="0" role="button">
+                    <span class="hf-icon">🌿</span>
+                    <div class="hf-title">Grounded Soul</div>
+                    <div class="hf-text">Rooted in earth, building foundations that last centuries</div>
+                </div>
+                <div class="home-feature" onclick="navigateTo('aesthetics')" data-tooltip="View mood boards" tabindex="0" role="button">
+                    <span class="hf-icon">✨</span>
+                    <div class="hf-title">Luxury Seeker</div>
+                    <div class="hf-text">An eye for beauty that transforms the ordinary into art</div>
+                </div>
+                <div class="home-feature" onclick="navigateTo('compatibility')" data-tooltip="Check zodiac bonds" tabindex="0" role="button">
+                    <span class="hf-icon">💫</span>
+                    <div class="hf-title">Loyal Heart</div>
+                    <div class="hf-text">Steadfast devotion that weathers every storm</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════ PERSONALITY PAGE ═══════════════ -->
+        <div class="page" id="page-personality">
+            <div class="section-container">
+                <div class="section-header reveal">
+                    <p class="section-overline">Character Profile</p>
+                    <h2 class="section-title">The Taurus Personality</h2>
+                    <p class="section-desc">A rich tapestry of earthy sensuality and unwavering determination. Each trait is a thread in the bull's magnificent nature.</p>
+                    <div class="section-rule"></div>
+                </div>
+                <div class="personality-layout">
+                    <div class="radar-wrap reveal">
+                        <canvas id="radar-canvas"></canvas>
+                    </div>
+                    <div class="traits-col reveal rd1" id="traits-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                <div class="personality-quote reveal rd2" id="personalityQuote" onclick="cycleQuote()" tabindex="0" role="button" aria-label="Click for next quote">
+                    <blockquote id="quoteText">"Patience is not the ability to wait, but how you act while you're waiting."</blockquote>
+                    <cite id="quoteAuthor">— Taurus Proverb</cite>
+                    <div class="quote-hint">Click for another wisdom</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════ AESTHETICS PAGE ═══════════════ -->
+        <div class="page" id="page-aesthetics">
+            <div class="section-container">
+                <div class="section-header reveal">
+                    <p class="section-overline">Visual Identity</p>
+                    <h2 class="section-title">Taurus Aesthetics</h2>
+                    <p class="section-desc">Select a mood to transform the visual landscape. Every Taurus has layers — from grounded earth to unbridled wildness.</p>
+                    <div class="section-rule"></div>
+                </div>
+                <div class="mood-selector reveal">
+                    <button class="mood-btn active" data-mood="earthy" onclick="setMood('earthy')">
+                        <span>🌿 Earthy</span>
+                    </button>
+                    <button class="mood-btn" data-mood="luxe" onclick="setMood('luxe')">
+                        <span>✨ Luxe</span>
+                    </button>
+                    <button class="mood-btn" data-mood="wild" onclick="setMood('wild')">
+                        <span>🌲 Wild</span>
+                    </button>
+                </div>
+                <div class="moodboard reveal rd1" id="moodboard">
+                    <!-- Populated by JS -->
+                </div>
+                <div class="texture-row reveal rd2">
+                    <div class="tex-btn active" style="background:linear-gradient(135deg,#3D5A2A,#5A7A3A)" data-label="Moss" onclick="selectTex(this)"></div>
+                    <div class="tex-btn" style="background:linear-gradient(135deg,#8B6A4A,#A07A5A)" data-label="Clay" onclick="selectTex(this)"></div>
+                    <div class="tex-btn" style="background:linear-gradient(135deg,#D4AF7A,#C9956A)" data-label="Gold" onclick="selectTex(this)"></div>
+                    <div class="tex-btn" style="background:linear-gradient(135deg,#5A5A6A,#7A7A8A)" data-label="Stone" onclick="selectTex(this)"></div>
+                    <div class="tex-btn" style="background:linear-gradient(135deg,#2D5A3D,#4A7A5A)" data-label="Forest" onclick="selectTex(this)"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════ ELEMENTS PAGE ═══════════════ -->
+        <div class="page" id="page-elements">
+            <div class="section-container">
+                <div class="section-header reveal">
+                    <p class="section-overline">Celestial Associations</p>
+                    <h2 class="section-title">Taurus Elements</h2>
+                    <p class="section-desc">Click each card to reveal deeper symbolism woven into the Taurus archetype.</p>
+                    <div class="section-rule"></div>
+                </div>
+                <div class="elements-grid reveal" id="elements-grid">
+                    <!-- Populated by JS -->
+                </div>
+                <div class="el-info-row reveal rd1" id="elInfoRow">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════ COMPATIBILITY PAGE ═══════════════ -->
+        <div class="page" id="page-compatibility">
+            <div class="section-container">
+                <div class="section-header reveal">
+                    <p class="section-overline">Zodiac Connections</p>
+                    <h2 class="section-title">Compatibility</h2>
+                    <p class="section-desc">Click any sign on the rotating wheel to discover how Taurus connects with each cosmic neighbor.</p>
+                    <div class="section-rule"></div>
+                </div>
+                <div class="compat-layout">
+                    <div class="wheel-wrap reveal">
+                        <canvas id="zodiac-canvas"></canvas>
+                        <div class="wheel-status" id="wheelStatus">Wheel rotating — click a sign to explore</div>
+                    </div>
+                    <div class="compat-info reveal rd1">
+                        <div class="compat-card" id="compat-card">
+                            <div class="compat-placeholder">
+                                <div class="compat-ph-icon">♉</div>
+                                <p class="compat-ph-text">Click a zodiac sign on the wheel<br>to explore its cosmic bond with Taurus</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-inner">
+            <span class="footer-symbol" aria-hidden="true">♉</span>
+            <p class="footer-tagline">"Slow, steady, and draped in starlight."</p>
+            <div class="footer-grid">
+                <div class="footer-stat" data-tooltip="Taurus season dates">
+                    <span class="footer-stat-icon">📅</span>
+                    <div class="footer-stat-label">Season</div>
+                    <div class="footer-stat-value">Apr 20 – May 20</div>
+                </div>
+                <div class="footer-stat" data-tooltip="Venus — goddess of love & beauty">
+                    <span class="footer-stat-icon">♀</span>
+                    <div class="footer-stat-label">Ruling Planet</div>
+                    <div class="footer-stat-value">Venus</div>
+                </div>
+                <div class="footer-stat" data-tooltip="Fixed earth — stable, enduring">
+                    <span class="footer-stat-icon">🌍</span>
+                    <div class="footer-stat-label">Element</div>
+                    <div class="footer-stat-value">Earth · Fixed</div>
+                </div>
+                <div class="footer-stat" data-tooltip="The emerald promotes growth & loyalty">
+                    <span class="footer-stat-icon">💎</span>
+                    <div class="footer-stat-label">Gemstone</div>
+                    <div class="footer-stat-value">Emerald</div>
+                </div>
+            </div>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a onclick="navigateTo('home')" tabindex="0">Home</a>
+                <a onclick="navigateTo('personality')" tabindex="0">Personality</a>
+                <a onclick="navigateTo('aesthetics')" tabindex="0">Aesthetics</a>
+                <a onclick="navigateTo('elements')" tabindex="0">Elements</a>
+                <a onclick="navigateTo('compatibility')" tabindex="0">Compatibility</a>
+            </nav>
+            <p class="footer-copy">Taurus — The Celestial Bull · Built with patience, beauty & cosmic intention<br>♉ Earth · Fixed · Venus · Emerald · Second House</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
